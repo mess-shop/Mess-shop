@@ -7,12 +7,7 @@
 // ============================================
 // PRODUCT CONFIGURATION - MESS COLLECTION
 // ============================================
-// 📝 SAMPLE PRODUCTS - DELETE ANY YOU DON'T WANT
-// Simply remove the objects you don't need, keep the ones you want
-// Or add new ones following the same structure
-
 const products = [
-    // === STREETWEAR COLLECTION ===
     {
         id: 1,
         name: "MESS Signature Hoodie",
@@ -41,8 +36,6 @@ const products = [
         image: "https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?w=600&h=800&fit=crop",
         sizes: ["S", "M", "L", "XL"]
     },
-    
-    // === OUTERWEAR COLLECTION ===
     {
         id: 5,
         name: "MESS Premium Leather Jacket",
@@ -64,8 +57,6 @@ const products = [
         image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=800&fit=crop",
         sizes: ["S", "M", "L", "XL"]
     },
-    
-    // === ACCESSORIES COLLECTION ===
     {
         id: 8,
         name: "MESS Designer Sunglasses",
@@ -94,8 +85,6 @@ const products = [
         image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&h=800&fit=crop",
         sizes: ["One Size"]
     },
-    
-    // === FOOTWEAR COLLECTION ===
     {
         id: 12,
         name: "MESS High-Top Sneakers",
@@ -117,8 +106,6 @@ const products = [
         image: "https://images.unsplash.com/photo-1638247025967-b4e38f787b76?w=600&h=800&fit=crop",
         sizes: ["40", "41", "42", "43", "44", "45"]
     },
-    
-    // === EXCLUSIVE COLLECTION ===
     {
         id: 15,
         name: "MESS Limited Edition Hoodie",
@@ -156,7 +143,6 @@ let selectedSize = null;
 // ============================================
 // EMAILJS CONFIGURATION
 // ============================================
-// Initialize EmailJS with your public key
 (function() {
     emailjs.init("Z7kuWQhsKGjCHrx4e");
 })();
@@ -178,10 +164,6 @@ const navbar = document.getElementById('navbar');
 // PRODUCT RENDERING
 // ============================================
 
-/**
- * Render all products from the products array
- * This function dynamically generates HTML for each product
- */
 function renderProducts() {
     productsGrid.innerHTML = '';
     
@@ -190,22 +172,14 @@ function renderProducts() {
         productsGrid.appendChild(productCard);
     });
     
-    // Trigger scroll animations after rendering
     observeProducts();
 }
 
-/**
- * Create a product card element
- * @param {Object} product - Product data
- * @param {Number} index - Index for staggered animation
- * @returns {HTMLElement} Product card element
- */
 function createProductCard(product, index) {
     const card = document.createElement('div');
     card.className = 'product-card';
     card.style.animationDelay = `${index * 0.1}s`;
     
-    // Generate size buttons HTML
     const sizeButtonsHTML = product.sizes.map(size => `
         <button class="size-btn" data-size="${size}" onclick="selectSize(this, ${product.id})">${size}</button>
     `).join('');
@@ -245,32 +219,19 @@ function createProductCard(product, index) {
     return card;
 }
 
-/**
- * Handle size selection
- * @param {HTMLElement} btn - Clicked size button
- * @param {Number} productId - Product ID
- */
 function selectSize(btn, productId) {
-    // Remove selected class from all buttons in this product
     const sizeButtons = document.querySelectorAll(`#sizes-${productId} .size-btn`);
     sizeButtons.forEach(button => button.classList.remove('selected'));
     
-    // Add selected class to clicked button
     btn.classList.add('selected');
     
-    // Enable order button
     const orderBtn = document.getElementById(`order-btn-${productId}`);
     orderBtn.disabled = false;
     
-    // Store selection
     selectedProduct = products.find(p => p.id === productId);
     selectedSize = btn.dataset.size;
 }
 
-/**
- * Initiate order process - scroll to form and populate data
- * @param {Number} productId - Product ID
- */
 function initiateOrder(productId) {
     const product = products.find(p => p.id === productId);
     const selectedBtn = document.querySelector(`#sizes-${productId} .size-btn.selected`);
@@ -283,13 +244,10 @@ function initiateOrder(productId) {
     selectedProduct = product;
     selectedSize = selectedBtn.dataset.size;
     
-    // Update form display
     updateSelectedProductDisplay();
     
-    // Scroll to order form
     document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
     
-    // Highlight the form temporarily
     const formWrapper = document.querySelector('.order-form-wrapper');
     formWrapper.style.animation = 'pulse 1s';
     setTimeout(() => {
@@ -297,9 +255,6 @@ function initiateOrder(productId) {
     }, 1000);
 }
 
-/**
- * Update the selected product display in the order form
- */
 function updateSelectedProductDisplay() {
     if (!selectedProduct || !selectedSize) {
         selectedProductDiv.innerHTML = '<span class="no-selection">Please select a MESS product from above</span>';
@@ -315,10 +270,6 @@ function updateSelectedProductDisplay() {
     `;
 }
 
-/**
- * Open WhatsApp with pre-filled message
- * @param {Number} productId - Product ID
- */
 function openWhatsApp(productId) {
     const product = products.find(p => p.id === productId);
     const selectedBtn = document.querySelector(`#sizes-${productId} .size-btn.selected`);
@@ -338,67 +289,66 @@ function openWhatsApp(productId) {
 }
 
 // ============================================
-// FORM HANDLING
+// FORM HANDLING - FIXED EMAIL VARIABLES
 // ============================================
 
-/**
- * Handle form submission with EmailJS
- */
 orderForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    // Validate product selection
     if (!selectedProduct || !selectedSize) {
         alert('Please select a MESS product and size first');
         document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
         return;
     }
     
-    // Get form data
-    const formData = {
-        product_name: selectedProduct.name,
-        product_price: selectedProduct.price,
-        size: selectedSize,
-        customer_name: document.getElementById('customerName').value,
-        customer_phone: document.getElementById('customerPhone').value,
-        customer_address: document.getElementById('customerAddress').value,
-        order_notes: document.getElementById('orderNotes').value || 'No additional notes',
-        to_email: 'mess95374@gmail.com'
+    // Get values from form inputs
+    const customerName = document.getElementById('customerName').value;
+    const customerPhone = document.getElementById('customerPhone').value;
+    const customerAddress = document.getElementById('customerAddress').value;
+    const orderNotes = document.getElementById('orderNotes').value || 'No additional notes';
+    
+    // ==========================================
+    // IMPORTANT: These variables must match your EmailJS template exactly!
+    // Update your EmailJS template to use these variable names:
+    // {{product}}, {{size}}, {{name}}, {{phone}}, {{address}}, {{notes}}
+    // ==========================================
+    
+    const templateParams = {
+        product: selectedProduct.name,           // Matches {{product}} in template
+        size: selectedSize,                       // Matches {{size}} in template
+        name: customerName,                       // Matches {{name}} in template
+        phone: customerPhone,                     // Matches {{phone}} in template
+        address: customerAddress,                 // Matches {{address}} in template
+        notes: orderNotes                         // Matches {{notes}} in template
     };
     
-    // Show loading state
+    console.log('Sending order with params:', templateParams);
+    
     setLoadingState(true);
     
     try {
-        // Send email using EmailJS
         const response = await emailjs.send(
             'service_2ikbrx5',
             'template_bukv4de',
-            formData,
+            templateParams,
             'Z7kuWQhsKGjCHrx4e'
         );
         
         console.log('MESS Order sent successfully:', response);
         
-        // Show success message
         showSuccessMessage();
         
-        // Reset form
         orderForm.reset();
         resetProductSelection();
         
     } catch (error) {
         console.error('MESS Order sending failed:', error);
-        alert('Failed to send MESS order. Please try again or contact us via WhatsApp.');
+        alert('Failed to send MESS order. Error: ' + error.text);
     } finally {
         setLoadingState(false);
     }
 });
 
-/**
- * Set loading state on submit button
- * @param {Boolean} isLoading - Loading state
- */
 function setLoadingState(isLoading) {
     const btnText = submitBtn.querySelector('.btn-text');
     const btnLoader = submitBtn.querySelector('.btn-loader');
@@ -414,17 +364,11 @@ function setLoadingState(isLoading) {
     }
 }
 
-/**
- * Show success message and hide form
- */
 function showSuccessMessage() {
     orderForm.style.display = 'none';
     successMessage.classList.add('show');
 }
 
-/**
- * Reset for new order
- */
 newOrderBtn.addEventListener('click', function() {
     successMessage.classList.remove('show');
     orderForm.style.display = 'flex';
@@ -432,19 +376,14 @@ newOrderBtn.addEventListener('click', function() {
     resetProductSelection();
 });
 
-/**
- * Reset product selection
- */
 function resetProductSelection() {
     selectedProduct = null;
     selectedSize = null;
     
-    // Reset all size buttons
     document.querySelectorAll('.size-btn').forEach(btn => {
         btn.classList.remove('selected');
     });
     
-    // Disable all order buttons
     document.querySelectorAll('.btn-primary').forEach(btn => {
         btn.disabled = true;
     });
@@ -456,9 +395,6 @@ function resetProductSelection() {
 // SCROLL ANIMATIONS
 // ============================================
 
-/**
- * Intersection Observer for product cards
- */
 function observeProducts() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -476,9 +412,6 @@ function observeProducts() {
     });
 }
 
-/**
- * Navbar scroll effect
- */
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         navbar.style.background = 'rgba(10, 10, 10, 0.95)';
@@ -496,7 +429,6 @@ window.addEventListener('scroll', () => {
 mobileMenuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('active');
     
-    // Animate hamburger to X
     const spans = mobileMenuBtn.querySelectorAll('span');
     if (mobileMenu.classList.contains('active')) {
         spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -509,7 +441,6 @@ mobileMenuBtn.addEventListener('click', () => {
     }
 });
 
-// Close mobile menu when clicking links
 document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => {
         mobileMenu.classList.remove('active');
@@ -524,7 +455,6 @@ document.querySelectorAll('.mobile-link').forEach(link => {
 // INITIALIZATION
 // ============================================
 
-// Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     console.log('MESS - Make Every Style Statement');

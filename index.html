@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MESS BRAND</title>
 
 <link rel="stylesheet" href="style.css">
@@ -12,30 +13,55 @@
 
 <!-- ================= NAVBAR ================= -->
 <nav class="navbar">
-  <div class="container nav-container">
+    <div class="container nav-container">
 
-    <a href="#" class="logo">MESS BRAND</a>
+        <!-- LOGO IMAGE -->
+        <a href="#" class="logo">
+            <img src="images/logo.png" alt="MESS BRAND">
+        </a>
 
-    <div class="nav-links">
-      <a href="#products">Products</a>
-      <a href="#order" class="order-nav">Order</a>
+        <div class="nav-links">
+            <a href="#products">Products</a>
+            <a href="#order" class="order-nav">Order</a>
+        </div>
+
+    </div>
+</nav>
+
+
+<!-- ================= HERO (واجهة الموقع) ================= -->
+<section class="hero">
+
+    <div class="container">
+        <h1 class="hero-title">MESS BRAND</h1>
+        <p class="hero-subtitle">
+            Premium Streetwear Collection
+        </p>
+
+        <a href="#products" class="cta-button">
+            Shop Now
+        </a>
     </div>
 
-  </div>
-</nav>
+</section>
 
 
 <!-- ================= PRODUCTS ================= -->
 <section id="products" class="products">
+
 <div class="container">
+
+<h2 class="section-title">Our Products</h2>
 
 <div class="products-grid">
 
-<!-- PRODUCT -->
+<!-- PRODUCT CARD -->
 <div class="product-card">
 
     <div class="product-info">
+
         <h3 class="product-name">Denim Jacket</h3>
+        <p class="product-price">$49</p>
 
         <div class="product-actions">
 
@@ -47,65 +73,72 @@
                 <button class="size-btn" data-size="XL">XL</button>
             </div>
 
-            <!-- ORDER -->
+            <!-- ORDER BUTTON -->
             <button class="order-btn" data-product="Denim Jacket">
                 Order Now
             </button>
 
             <!-- WHATSAPP -->
-            <a href="#" class="whatsapp-btn" data-product="Denim Jacket">
-                WhatsApp
+            <a href="#"
+               class="whatsapp-btn"
+               data-product="Denim Jacket">
+               WhatsApp
             </a>
 
         </div>
-    </div>
 
+    </div>
 </div>
 <!-- END PRODUCT -->
 
 </div>
 </div>
+
 </section>
 
 
 <!-- ================= ORDER FORM ================= -->
 <section id="order" class="order-section">
-<div class="order-container">
+
+<div class="container order-container">
 
 <h2 class="section-title">Complete Your Order</h2>
 
 <form id="orderForm" class="order-form">
 
+    <!-- PRODUCT NAME -->
     <div class="form-group full-width">
         <label>Product Name *</label>
         <input type="text" id="productName" name="productName" required>
     </div>
 
-    <!-- SIZE (HIDDEN) -->
+    <!-- HIDDEN SIZE -->
     <input type="hidden" id="productSize" name="productSize">
 
-    <div class="form-row">
-
-        <div class="form-group">
-            <label>Full Name *</label>
-            <input type="text" name="fullName" required>
-        </div>
-
-        <div class="form-group">
-            <label>Phone *</label>
-            <input type="tel" name="phone" required>
-        </div>
-
+    <!-- NAME -->
+    <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" name="fullName" required>
     </div>
 
+    <!-- PHONE -->
+    <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" name="phone" required>
+    </div>
+
+    <!-- ADDRESS -->
     <div class="form-group full-width">
         <label>Address *</label>
         <input type="text" name="address" required>
     </div>
 
+    <!-- NOTES -->
     <div class="form-group full-width">
         <label>Additional Notes</label>
-        <textarea name="notes" rows="3"></textarea>
+        <textarea name="notes"
+                  rows="3"
+                  placeholder="Additional notes (optional)..."></textarea>
     </div>
 
     <button type="submit" class="submit-btn">
@@ -114,14 +147,25 @@
 
 </form>
 
-<div id="successMessage" class="success-message">
+<!-- SUCCESS MESSAGE -->
+<div id="successMessage">
     <h3>✅ Order Sent Successfully!</h3>
-    <button id="newOrderBtn">New Order</button>
+    <button id="newOrderBtn" class="order-nav">New Order</button>
 </div>
 
 </div>
 </section>
 
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <p class="footer-text">
+        © 2025 MESS BRAND — All Rights Reserved
+    </p>
+</footer>
+
+
+<!-- ================= SCRIPT ================= -->
 <script src="script.js"></script>
 
 </body>

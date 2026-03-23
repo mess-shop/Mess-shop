@@ -1,128 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MESS BRAND</title>
-
-<link rel="stylesheet" href="style.css">
-
-<!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOIR LUXE | Premium Fashion</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-    <div class="nav-container">
-        <div class="logo">MESS</div>
-        <a href="#order" class="order-nav">Order</a>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-text">NOIR</span>
+                <span class="logo-accent">LUXE</span>
+            </a>
+            <div class="nav-links">
+                <a href="#products" class="nav-link">Collection</a>
+                <a href="#order" class="nav-link">Order</a>
+                <a href="https://wa.me/212673991904" target="_blank" class="nav-link whatsapp-nav">WhatsApp</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#products" class="mobile-link">Collection</a>
+        <a href="#order" class="mobile-link">Order</a>
+        <a href="https://wa.me/212673991904" target="_blank" class="mobile-link">WhatsApp</a>
     </div>
-</nav>
 
-<!-- HERO -->
-<section class="hero">
-    <h1 class="hero-title">MESS BRAND</h1>
-    <p class="hero-subtitle">Premium Streetwear</p>
-</section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">✦ New Collection 2026</div>
+            <h1 class="hero-title">
+                <span class="title-line">Elegance</span>
+                <span class="title-line accent">Redefined</span>
+            </h1>
+            <p class="hero-subtitle">
+                Discover our curated selection of premium fashion pieces. 
+                Where sophistication meets contemporary design.
+            </p>
+            <a href="#products" class="cta-button">
+                <span>Shop Now</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
 
-<!-- PRODUCTS -->
-<section class="products container">
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Collection</span>
+                <h2 class="section-title">Featured Pieces</h2>
+                <p class="section-desc">Select your size and order instantly</p>
+            </div>
+            
+            <!-- Products Grid - Dynamically populated by JavaScript -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be rendered here -->
+            </div>
+        </div>
+    </section>
 
-    <h2 class="section-title">Products</h2>
+    <!-- Order Section -->
+    <section class="order-section" id="order">
+        <div class="container">
+            <div class="order-wrapper">
+                <div class="order-info">
+                    <span class="section-tag">Place Order</span>
+                    <h2 class="section-title">Complete Your Purchase</h2>
+                    <p class="order-desc">
+                        Fill in your details below. We'll process your order immediately and contact you via WhatsApp for confirmation.
+                    </p>
+                    <div class="order-features">
+                        <div class="feature">
+                            <div class="feature-icon">⚡</div>
+                            <span>Fast Processing</span>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🔒</div>
+                            <span>Secure Payment</span>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🚚</div>
+                            <span>Express Delivery</span>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="products-grid">
-
-        <!-- PRODUCT -->
-        <div class="product-card">
-
-            <div class="product-info">
-                <h3 class="product-name">Denim Jacket</h3>
-                <p class="product-price">$49</p>
-
-                <div class="product-actions">
-
-                    <div class="sizes">
-                        <button class="size-btn" data-size="S">S</button>
-                        <button class="size-btn" data-size="M">M</button>
-                        <button class="size-btn" data-size="L">L</button>
-                        <button class="size-btn" data-size="XL">XL</button>
+                <div class="order-form-wrapper">
+                    <!-- Success Message (Hidden by default) -->
+                    <div class="success-message" id="successMessage">
+                        <div class="success-icon">✓</div>
+                        <h3>Order Received!</h3>
+                        <p>Thank you for your purchase. We've sent a confirmation email and will contact you shortly via WhatsApp.</p>
+                        <button class="new-order-btn" id="newOrderBtn">Place New Order</button>
                     </div>
 
-                    <button class="order-btn" data-product="Denim Jacket">
-                        Order Now
-                    </button>
+                    <!-- Order Form -->
+                    <form class="order-form" id="orderForm">
+                        <div class="form-group product-summary">
+                            <label>Selected Product</label>
+                            <div class="selected-product" id="selectedProduct">
+                                <span class="no-selection">Please select a product from above</span>
+                            </div>
+                        </div>
 
-                    <a href="#" class="whatsapp-btn" data-product="Denim Jacket">
-                        WhatsApp
-                    </a>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customerName">Full Name *</label>
+                                <input type="text" id="customerName" name="customerName" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="customerPhone">Phone Number *</label>
+                                <input type="tel" id="customerPhone" name="customerPhone" required placeholder="+212 6XX XXX XXX">
+                            </div>
+                        </div>
 
+                        <div class="form-group">
+                            <label for="customerAddress">Delivery Address *</label>
+                            <textarea id="customerAddress" name="customerAddress" rows="3" required placeholder="Enter your full address..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="orderNotes">Order Notes (Optional)</label>
+                            <textarea id="orderNotes" name="orderNotes" rows="2" placeholder="Any special requests..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span class="btn-text">Complete Order</span>
+                            <span class="btn-loader" style="display: none;">
+                                <span class="spinner"></span>
+                                Processing...
+                            </span>
+                        </button>
+
+                        <p class="form-note">
+                            By placing this order, you agree to our terms. Payment is handled securely via WhatsApp.
+                        </p>
+                    </form>
                 </div>
             </div>
-
         </div>
+    </section>
 
-    </div>
-
-</section>
-
-<!-- ORDER FORM -->
-<section id="order" class="order-section">
-
-<div class="order-container">
-
-<h2>Complete Your Order</h2>
-
-<form id="orderForm" class="order-form">
-
-    <div class="form-group full-width">
-        <label>Product</label>
-        <input type="text" id="productName" name="productName" required>
-    </div>
-
-    <input type="hidden" id="productSize" name="productSize">
-
-    <div class="form-row">
-
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" name="name" required>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-text">NOIR</span>
+                        <span class="logo-accent">LUXE</span>
+                    </div>
+                    <p>Premium fashion for the modern elite.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <a href="mailto:mess95374@gmail.com">mess95374@gmail.com</a>
+                    <a href="https://wa.me/212673991904" target="_blank">+212 6 73 99 19 04</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NOIR LUXE. All rights reserved.</p>
+            </div>
         </div>
+    </footer>
 
-        <div class="form-group">
-            <label>Phone</label>
-            <input type="text" name="phone" required>
-        </div>
-
-    </div>
-
-    <div class="form-group full-width">
-        <label>Address</label>
-        <input type="text" name="address" required>
-    </div>
-
-    <div class="form-group full-width">
-        <label>Notes</label>
-        <textarea name="message"></textarea>
-    </div>
-
-    <button type="submit" class="submit-btn">Submit Order</button>
-
-</form>
-
-<!-- SUCCESS -->
-<div id="successMessage">
-    <h3>Order Sent Successfully!</h3>
-    <button id="newOrderBtn">New Order</button>
-</div>
-
-</div>
-
-</section>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>

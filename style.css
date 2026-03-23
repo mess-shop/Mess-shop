@@ -549,3 +549,20 @@ img {
         height: 44px;
     }
 }
+.sizes {
+  margin-bottom: 10px;
+}
+
+.size-btn {
+  padding: 6px 12px;
+  margin: 4px;
+  border: 1px solid #FF2D8F;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.size-btn.active {
+  background: #FF2D8F;
+}

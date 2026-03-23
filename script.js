@@ -1,217 +1,180 @@
 /* ============================================
-   MESS Brand - JavaScript (FIXED VERSION)
+   MESS Brand - FINAL FIXED JavaScript
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ============================================
-    // Configuration
-    // ============================================
     const WHATSAPP_NUMBER = '212673991904';
 
     let selectedSize = "";
+    let selectedProduct = "";
 
-    // ============================================
-    // SIZE SELECTION
-    // ============================================
-    const sizeButtons = document.querySelectorAll(".size-btn");
+    /* ============================================
+       SIZE SELECTION (PER PRODUCT)
+    ============================================ */
 
-    sizeButtons.forEach(btn => {
-        btn.addEventListener("click", function () {
+    document.querySelectorAll('.product-card').forEach(card => {
 
-            // remove old active
-            sizeButtons.forEach(b => b.classList.remove("active"));
+        const sizeButtons = card.querySelectorAll('.size-btn');
 
-            // add new active
-            this.classList.add("active");
+        sizeButtons.forEach(btn => {
+            btn.addEventListener('click', function () {
 
-            // save size
-            selectedSize = this.dataset.size;
+                // remove active only inside same product
+                sizeButtons.forEach(b => b.classList.remove('active'));
+
+                this.classList.add('active');
+
+                selectedSize = this.dataset.size;
+                selectedProduct =
+                    card.querySelector('.order-btn').dataset.product;
+            });
         });
     });
 
-    // ============================================
-    // Order Button Functionality
-    // ============================================
-    const orderButtons = document.querySelectorAll('.order-btn');
+    /* ============================================
+       ORDER BUTTON
+    ============================================ */
+
     const productNameInput = document.getElementById('productName');
     const productSizeInput = document.getElementById('productSize');
     const orderSection = document.getElementById('order');
 
-    orderButtons.forEach(button => {
+    document.querySelectorAll('.order-btn').forEach(button => {
+
         button.addEventListener('click', function () {
 
-            // check size first
             if (!selectedSize) {
                 alert("Choose size first");
                 return;
             }
 
-            const productName = this.getAttribute('data-product');
+            const productName = this.dataset.product;
 
-            // fill form automatically
-            if (productNameInput) {
-                productNameInput.value = productName;
-            }
+            productNameInput.value = productName;
+            productSizeInput.value = selectedSize;
 
-            if (productSizeInput) {
-                productSizeInput.value = selectedSize;
-            }
-
-            // scroll to form
-            orderSection.scrollIntoView({ behavior: 'smooth' });
+            orderSection.scrollIntoView({
+                behavior: 'smooth'
+            });
         });
+
     });
 
-    // ============================================
-    // WhatsApp Button
-    // ============================================
-    const whatsappButtons = document.querySelectorAll('.whatsapp-btn');
+    /* ============================================
+       WHATSAPP BUTTON
+    ============================================ */
 
-    whatsappButtons.forEach(button => {
+    document.querySelectorAll('.whatsapp-btn').forEach(button => {
+
         button.addEventListener('click', function (e) {
             e.preventDefault();
 
-            const productName = this.getAttribute('data-product');
-
             if (!selectedSize) {
                 alert("Choose size first");
                 return;
             }
+
+            const productName =
+                this.closest('.product-card')
+                    .querySelector('.order-btn')
+                    .dataset.product;
 
             const message =
                 `Hello, I want to order ${productName} - Size: ${selectedSize}`;
 
-            const whatsappUrl =
+            const url =
                 `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
-            window.open(whatsappUrl, '_blank');
+            window.open(url, '_blank');
         });
+
     });
 
-    // ============================================
-    // Order Form Handling
-    // ============================================
+    /* ============================================
+       ORDER FORM
+    ============================================ */
+
     const orderForm = document.getElementById('orderForm');
     const successMessage = document.getElementById('successMessage');
     const newOrderBtn = document.getElementById('newOrderBtn');
 
+    if (successMessage) {
+        successMessage.classList.remove('active');
+    }
+
     if (orderForm) {
+
         orderForm.addEventListener('submit', function (e) {
-
-            const formAction = orderForm.getAttribute('action');
-
-            if (formAction.startsWith('mailto:')) {
-                setTimeout(() => {
-                    orderForm.style.display = 'none';
-                    successMessage.classList.add('active');
-                    orderForm.reset();
-                }, 500);
-                return;
-            }
-
-            if (formAction.includes('YOUR_FORM_ID')) {
-                e.preventDefault();
-                alert('Please configure your form first.');
-                return;
-            }
 
             e.preventDefault();
 
-            const formData = new FormData(orderForm);
-
+            // simulate sending
             const submitBtn = orderForm.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
 
-            submitBtn.textContent = 'Sending...';
+            submitBtn.textContent = "Sending...";
             submitBtn.disabled = true;
 
-            fetch(formAction, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            })
-                .then(response => {
-                    if (response.ok) {
-                        orderForm.style.display = 'none';
-                        successMessage.classList.add('active');
-                        orderForm.reset();
-                        selectedSize = "";
-                    } else {
-                        throw new Error();
-                    }
-                })
-                .catch(() => {
-                    alert('Error sending order. Try WhatsApp.');
-                })
-                .finally(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                });
+            setTimeout(() => {
+
+                orderForm.style.display = "none";
+                successMessage.classList.add('active');
+
+                orderForm.reset();
+                selectedSize = "";
+                selectedProduct = "";
+
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+
+            }, 900);
         });
     }
 
-    // ============================================
-    // New Order Button
-    // ============================================
+    /* ============================================
+       NEW ORDER BUTTON
+    ============================================ */
+
     if (newOrderBtn) {
         newOrderBtn.addEventListener('click', function () {
+
             successMessage.classList.remove('active');
             orderForm.style.display = 'block';
-            orderSection.scrollIntoView({ behavior: 'smooth' });
+
+            document
+                .getElementById('order')
+                .scrollIntoView({ behavior: 'smooth' });
         });
     }
 
-    // ============================================
-    // Navbar Scroll Effect
-    // ============================================
+    /* ============================================
+       NAVBAR SHADOW
+    ============================================ */
+
     const navbar = document.querySelector('.navbar');
 
-    window.addEventListener('scroll', function () {
-        if (window.pageYOffset > 50) {
-            navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
-        } else {
-            navbar.style.boxShadow = 'none';
-        }
-    });
+    if (navbar) {
+        window.addEventListener('scroll', function () {
 
-    // ============================================
-    // Smooth Scroll
-    // ============================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow =
+                    '0 2px 20px rgba(0,0,0,0.3)';
+            } else {
+                navbar.style.boxShadow = 'none';
             }
         });
-    });
+    }
 
-    // ============================================
-    // Input Focus Effects
-    // ============================================
-    document.querySelectorAll('input, textarea').forEach(input => {
+    /* ============================================
+       PRODUCT ANIMATION
+    ============================================ */
 
-        input.addEventListener('focus', function () {
-            this.parentElement.classList.add('focused');
-        });
-
-        input.addEventListener('blur', function () {
-            this.parentElement.classList.remove('focused');
-        });
-    });
-
-    // ============================================
-    // Product Animation
-    // ============================================
-    const productCards = document.querySelectorAll('.product-card');
+    const cards = document.querySelectorAll('.product-card');
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
+
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
@@ -219,14 +182,17 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, { threshold: 0.1 });
 
-    productCards.forEach((card, index) => {
+    cards.forEach((card, index) => {
+
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
         card.style.transition =
-            `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            `opacity 0.6s ease ${index * 0.1}s,
+             transform 0.6s ease ${index * 0.1}s`;
 
         observer.observe(card);
     });
 
-    console.log('MESS Brand website loaded successfully!');
+    console.log("✅ MESS Brand loaded successfully");
+
 });

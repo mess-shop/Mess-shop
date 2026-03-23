@@ -12,12 +12,10 @@
 
 <!-- ================= NAVBAR ================= -->
 <nav class="navbar">
-  <div class="nav-container">
+  <div class="container nav-container">
 
-    <!-- LOGO -->
     <a href="#" class="logo">MESS BRAND</a>
 
-    <!-- MENU -->
     <div class="nav-links">
       <a href="#products">Products</a>
       <a href="#order" class="order-nav">Order</a>
@@ -29,18 +27,19 @@
 
 <!-- ================= PRODUCTS ================= -->
 <section id="products" class="products">
-
 <div class="container">
+
 <div class="products-grid">
 
-    <!-- PRODUCT 1 -->
-    <div class="product-card">
+<!-- PRODUCT -->
+<div class="product-card">
 
-        <div class="product-info">
-            <h3 class="product-name">Denim Jacket</h3>
-            <p class="product-price">$49</p>
+    <div class="product-info">
+        <h3 class="product-name">Denim Jacket</h3>
 
-            <!-- SIZE BUTTONS -->
+        <div class="product-actions">
+
+            <!-- SIZES -->
             <div class="sizes">
                 <button class="size-btn" data-size="S">S</button>
                 <button class="size-btn" data-size="M">M</button>
@@ -48,26 +47,21 @@
                 <button class="size-btn" data-size="XL">XL</button>
             </div>
 
-            <div class="product-actions">
+            <!-- ORDER -->
+            <button class="order-btn" data-product="Denim Jacket">
+                Order Now
+            </button>
 
-                <!-- ORDER -->
-                <button class="order-btn" data-product="Denim Jacket">
-                    Order Now
-                </button>
+            <!-- WHATSAPP -->
+            <a href="#" class="whatsapp-btn" data-product="Denim Jacket">
+                WhatsApp
+            </a>
 
-                <!-- WHATSAPP -->
-                <a href="#"
-                   class="whatsapp-btn"
-                   data-product="Denim Jacket">
-                   WhatsApp
-                </a>
-
-            </div>
         </div>
-
     </div>
-    <!-- END PRODUCT -->
 
+</div>
+<!-- END PRODUCT -->
 
 </div>
 </div>
@@ -76,48 +70,42 @@
 
 <!-- ================= ORDER FORM ================= -->
 <section id="order" class="order-section">
-
 <div class="order-container">
 
 <h2 class="section-title">Complete Your Order</h2>
 
-<form id="orderForm">
+<form id="orderForm" class="order-form">
 
-    <!-- PRODUCT NAME -->
     <div class="form-group full-width">
         <label>Product Name *</label>
         <input type="text" id="productName" name="productName" required>
     </div>
 
-    <!-- HIDDEN SIZE -->
+    <!-- SIZE (HIDDEN) -->
     <input type="hidden" id="productSize" name="productSize">
 
-    <!-- NAME -->
-    <div class="form-group">
-        <label>Full Name *</label>
-        <input type="text" name="fullName" required>
+    <div class="form-row">
+
+        <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" name="fullName" required>
+        </div>
+
+        <div class="form-group">
+            <label>Phone *</label>
+            <input type="tel" name="phone" required>
+        </div>
+
     </div>
 
-    <!-- PHONE -->
-    <div class="form-group">
-        <label>Phone Number *</label>
-        <input type="tel" name="phone" required>
-    </div>
-
-    <!-- ADDRESS -->
     <div class="form-group full-width">
         <label>Address *</label>
         <input type="text" name="address" required>
     </div>
 
-    <!-- ADDITIONAL NOTES ONLY -->
     <div class="form-group full-width">
         <label>Additional Notes</label>
-        <textarea
-            id="notes"
-            name="notes"
-            rows="3"
-            placeholder="Additional notes (optional)..."></textarea>
+        <textarea name="notes" rows="3"></textarea>
     </div>
 
     <button type="submit" class="submit-btn">
@@ -126,17 +114,14 @@
 
 </form>
 
-<!-- SUCCESS MESSAGE -->
 <div id="successMessage" class="success-message">
     <h3>✅ Order Sent Successfully!</h3>
-    <button id="newOrderBtn" class="cta-button">New Order</button>
+    <button id="newOrderBtn">New Order</button>
 </div>
 
 </div>
 </section>
 
-
-<!-- ================= SCRIPT ================= -->
 <script src="script.js"></script>
 
 </body>

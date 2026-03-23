@@ -44,13 +44,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     whatsappButtons.forEach(button => {
         button.addEventListener('click', function(e) {
-            const productName = this.getAttribute('data-product');
-            const message = `Hello, I want to order ${productName}`;
-            
-            // Update the href with the correct WhatsApp URL format
-            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-            this.href = whatsappUrl;
-        });
+    e.preventDefault(); // 
+
+    const productName = this.getAttribute('data-product');
+    const message = `Hello, I want to order ${productName}`;
+    
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    
+    window.open(whatsappUrl, '_blank'); // 
+});
     });
 
     // ============================================

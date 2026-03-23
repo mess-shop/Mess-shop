@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configuration
     // ============================================
     // TODO: Update this with your full international phone number (with country code, no + or 00)
-    const WHATSAPP_NUMBER = '0673991904'; // Example: '212673991904' for Morocco
+    const WHATSAPP_NUMBER = '212673991904'; // Example: '212673991904' for Morocco
     
     // ============================================
     // Order Button Functionality

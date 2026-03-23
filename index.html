@@ -3,169 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>MESS BRAND</title>
 
 <link rel="stylesheet" href="style.css">
+
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar">
-    <div class="container nav-container">
+<!-- NAVBAR -->
+<div class="navbar">
+    <h1>MESS BRAND</h1>
+</div>
 
-        <!-- LOGO IMAGE -->
-        <a href="#" class="logo">
-            <img src="images/logo.png" alt="MESS BRAND">
-        </a>
-
-        <div class="nav-links">
-            <a href="#products">Products</a>
-            <a href="#order" class="order-nav">Order</a>
-        </div>
-
-    </div>
-</nav>
-
-
-<!-- ================= HERO (واجهة الموقع) ================= -->
-<section class="hero">
-
-    <div class="container">
-        <h1 class="hero-title">MESS BRAND</h1>
-        <p class="hero-subtitle">
-            Premium Streetwear Collection
-        </p>
-
-        <a href="#products" class="cta-button">
-            Shop Now
-        </a>
-    </div>
-
-</section>
-
-
-<!-- ================= PRODUCTS ================= -->
-<section id="products" class="products">
-
+<!-- ORDER FORM -->
 <div class="container">
 
-<h2 class="section-title">Our Products</h2>
+<form id="orderForm">
 
-<div class="products-grid">
+<label>Product *</label>
+<input type="text" name="product" required>
 
-<!-- PRODUCT CARD -->
-<div class="product-card">
+<label>Size *</label>
+<select name="size" required>
+<option value="">Choose Size</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+</select>
 
-    <div class="product-info">
+<label>Phone Number *</label>
+<input type="text" name="phone" required>
 
-        <h3 class="product-name">Denim Jacket</h3>
-        <p class="product-price">$49</p>
+<label>Address *</label>
+<input type="text" name="address" required>
 
-        <div class="product-actions">
+<label>Additional Notes</label>
+<textarea name="notes" placeholder="Optional..."></textarea>
 
-            <!-- SIZES -->
-            <div class="sizes">
-                <button class="size-btn" data-size="S">S</button>
-                <button class="size-btn" data-size="M">M</button>
-                <button class="size-btn" data-size="L">L</button>
-                <button class="size-btn" data-size="XL">XL</button>
-            </div>
-
-            <!-- ORDER BUTTON -->
-            <button class="order-btn" data-product="Denim Jacket">
-                Order Now
-            </button>
-
-            <!-- WHATSAPP -->
-            <a href="#"
-               class="whatsapp-btn"
-               data-product="Denim Jacket">
-               WhatsApp
-            </a>
-
-        </div>
-
-    </div>
-</div>
-<!-- END PRODUCT -->
-
-</div>
-</div>
-
-</section>
-
-
-<!-- ================= ORDER FORM ================= -->
-<section id="order" class="order-section">
-
-<div class="container order-container">
-
-<h2 class="section-title">Complete Your Order</h2>
-
-<form id="orderForm" class="order-form">
-
-    <!-- PRODUCT NAME -->
-    <div class="form-group full-width">
-        <label>Product Name *</label>
-        <input type="text" id="productName" name="productName" required>
-    </div>
-
-    <!-- HIDDEN SIZE -->
-    <input type="hidden" id="productSize" name="productSize">
-
-    <!-- NAME -->
-    <div class="form-group">
-        <label>Full Name *</label>
-        <input type="text" name="fullName" required>
-    </div>
-
-    <!-- PHONE -->
-    <div class="form-group">
-        <label>Phone Number *</label>
-        <input type="tel" name="phone" required>
-    </div>
-
-    <!-- ADDRESS -->
-    <div class="form-group full-width">
-        <label>Address *</label>
-        <input type="text" name="address" required>
-    </div>
-
-    <!-- NOTES -->
-    <div class="form-group full-width">
-        <label>Additional Notes</label>
-        <textarea name="notes"
-                  rows="3"
-                  placeholder="Additional notes (optional)..."></textarea>
-    </div>
-
-    <button type="submit" class="submit-btn">
-        Submit Order
-    </button>
+<button type="submit" class="submit-btn">
+Submit Order
+</button>
 
 </form>
 
 <!-- SUCCESS MESSAGE -->
 <div id="successMessage">
-    <h3>✅ Order Sent Successfully!</h3>
-    <button id="newOrderBtn" class="order-nav">New Order</button>
+✅ Order Sent Successfully!
+<br><br>
+<button onclick="location.reload()">New Order</button>
 </div>
 
 </div>
-</section>
 
-
-<!-- ================= FOOTER ================= -->
-<footer class="footer">
-    <p class="footer-text">
-        © 2025 MESS BRAND — All Rights Reserved
-    </p>
-</footer>
-
-
-<!-- ================= SCRIPT ================= -->
 <script src="script.js"></script>
 
 </body>

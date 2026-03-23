@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="style.css">
 
-<!-- EMAILJS -->
+<!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 </head>
@@ -15,50 +15,112 @@
 <body>
 
 <!-- NAVBAR -->
-<div class="navbar">
-    <h1>MESS BRAND</h1>
-</div>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">MESS</div>
+        <a href="#order" class="order-nav">Order</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <h1 class="hero-title">MESS BRAND</h1>
+    <p class="hero-subtitle">Premium Streetwear</p>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products container">
+
+    <h2 class="section-title">Products</h2>
+
+    <div class="products-grid">
+
+        <!-- PRODUCT -->
+        <div class="product-card">
+
+            <div class="product-info">
+                <h3 class="product-name">Denim Jacket</h3>
+                <p class="product-price">$49</p>
+
+                <div class="product-actions">
+
+                    <div class="sizes">
+                        <button class="size-btn" data-size="S">S</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="L">L</button>
+                        <button class="size-btn" data-size="XL">XL</button>
+                    </div>
+
+                    <button class="order-btn" data-product="Denim Jacket">
+                        Order Now
+                    </button>
+
+                    <a href="#" class="whatsapp-btn" data-product="Denim Jacket">
+                        WhatsApp
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 <!-- ORDER FORM -->
-<div class="container">
+<section id="order" class="order-section">
 
-<form id="orderForm">
+<div class="order-container">
 
-<label>Product *</label>
-<input type="text" name="product" required>
+<h2>Complete Your Order</h2>
 
-<label>Size *</label>
-<select name="size" required>
-<option value="">Choose Size</option>
-<option>S</option>
-<option>M</option>
-<option>L</option>
-<option>XL</option>
-</select>
+<form id="orderForm" class="order-form">
 
-<label>Phone Number *</label>
-<input type="text" name="phone" required>
+    <div class="form-group full-width">
+        <label>Product</label>
+        <input type="text" id="productName" name="productName" required>
+    </div>
 
-<label>Address *</label>
-<input type="text" name="address" required>
+    <input type="hidden" id="productSize" name="productSize">
 
-<label>Additional Notes</label>
-<textarea name="notes" placeholder="Optional..."></textarea>
+    <div class="form-row">
 
-<button type="submit" class="submit-btn">
-Submit Order
-</button>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="text" name="phone" required>
+        </div>
+
+    </div>
+
+    <div class="form-group full-width">
+        <label>Address</label>
+        <input type="text" name="address" required>
+    </div>
+
+    <div class="form-group full-width">
+        <label>Notes</label>
+        <textarea name="message"></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit Order</button>
 
 </form>
 
-<!-- SUCCESS MESSAGE -->
+<!-- SUCCESS -->
 <div id="successMessage">
-✅ Order Sent Successfully!
-<br><br>
-<button onclick="location.reload()">New Order</button>
+    <h3>Order Sent Successfully!</h3>
+    <button id="newOrderBtn">New Order</button>
 </div>
 
 </div>
+
+</section>
 
 <script src="script.js"></script>
 

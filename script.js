@@ -1,12 +1,8 @@
 /**
  * MESS - Make Every Style Statement
  * Luxury Fashion E-commerce
- * Complete JavaScript Functionality
  */
 
-// ============================================
-// PRODUCT CONFIGURATION - MESS COLLECTION
-// ============================================
 const products = [
     {
         id: 1,
@@ -136,20 +132,13 @@ const products = [
     }
 ];
 
-// Store selected product data
 let selectedProduct = null;
 let selectedSize = null;
 
-// ============================================
-// EMAILJS CONFIGURATION
-// ============================================
 (function() {
     emailjs.init("Z7kuWQhsKGjCHrx4e");
 })();
 
-// ============================================
-// DOM ELEMENTS
-// ============================================
 const productsGrid = document.getElementById('productsGrid');
 const orderForm = document.getElementById('orderForm');
 const successMessage = document.getElementById('successMessage');
@@ -159,10 +148,6 @@ const newOrderBtn = document.getElementById('newOrderBtn');
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 const navbar = document.getElementById('navbar');
-
-// ============================================
-// PRODUCT RENDERING
-// ============================================
 
 function renderProducts() {
     productsGrid.innerHTML = '';
@@ -289,7 +274,7 @@ function openWhatsApp(productId) {
 }
 
 // ============================================
-// FORM HANDLING - FIXED EMAIL VARIABLES
+// FIXED FORM HANDLING - ALL VARIABLES MATCHING
 // ============================================
 
 orderForm.addEventListener('submit', async function(e) {
@@ -301,28 +286,72 @@ orderForm.addEventListener('submit', async function(e) {
         return;
     }
     
-    // Get values from form inputs
-    const customerName = document.getElementById('customerName').value;
-    const customerPhone = document.getElementById('customerPhone').value;
-    const customerAddress = document.getElementById('customerAddress').value;
-    const orderNotes = document.getElementById('orderNotes').value || 'No additional notes';
+    // Get all form values
+    const customerName = document.getElementById('customerName').value.trim();
+    const customerPhone = document.getElementById('customerPhone').value.trim();
+    const customerAddress = document.getElementById('customerAddress').value.trim();
+    const orderNotes = document.getElementById('orderNotes').value.trim() || 'No additional notes';
+    
+    // Debug - check values before sending
+    console.log('=== ORDER DETAILS ===');
+    console.log('Product:', selectedProduct.name);
+    console.log('Size:', selectedSize);
+    console.log('Customer:', customerName);
+    console.log('Phone:', customerPhone);
+    console.log('Address:', customerAddress);
+    console.log('Notes:', orderNotes);
     
     // ==========================================
-    // IMPORTANT: These variables must match your EmailJS template exactly!
-    // Update your EmailJS template to use these variable names:
-    // {{product}}, {{size}}, {{name}}, {{phone}}, {{address}}, {{notes}}
+    // CRITICAL FIX: Send ALL possible variable names
+    // Your template might use any of these formats
     // ==========================================
     
     const templateParams = {
-        product: selectedProduct.name,           // Matches {{product}} in template
-        size: selectedSize,                       // Matches {{size}} in template
-        name: customerName,                       // Matches {{name}} in template
-        phone: customerPhone,                     // Matches {{phone}} in template
-        address: customerAddress,                 // Matches {{address}} in template
-        notes: orderNotes                         // Matches {{notes}} in template
+        // Standard format (lowercase, no spaces)
+        product: selectedProduct.name,
+        size: selectedSize,
+        name: customerName,
+        phone: customerPhone,
+        address: customerAddress,
+        notes: orderNotes,
+        
+        // Alternative formats (in case template uses these)
+        product_name: selectedProduct.name,
+        productName: selectedProduct.name,
+        Product: selectedProduct.name,
+        
+        size_selected: selectedSize,
+        selectedSize: selectedSize,
+        Size: selectedSize,
+        
+        customer_name: customerName,
+        customerName: customerName,
+        full_name: customerName,
+        fullName: customerName,
+        customer: customerName,
+        Customer: customerName,
+        
+        phone_number: customerPhone,
+        phoneNumber: customerPhone,
+        Phone: customerPhone,
+        
+        customer_address: customerAddress,
+        customerAddress: customerAddress,
+        delivery_address: customerAddress,
+        deliveryAddress: customerAddress,
+        Address: customerAddress,
+        
+        order_notes: orderNotes,
+        orderNotes: orderNotes,
+        additional_notes: orderNotes,
+        Notes: orderNotes,
+        
+        // Price info (bonus)
+        price: selectedProduct.price,
+        product_price: selectedProduct.price
     };
     
-    console.log('Sending order with params:', templateParams);
+    console.log('Sending params:', templateParams);
     
     setLoadingState(true);
     
@@ -334,16 +363,15 @@ orderForm.addEventListener('submit', async function(e) {
             'Z7kuWQhsKGjCHrx4e'
         );
         
-        console.log('MESS Order sent successfully:', response);
+        console.log('SUCCESS!', response.status, response.text);
         
         showSuccessMessage();
-        
         orderForm.reset();
         resetProductSelection();
         
     } catch (error) {
-        console.error('MESS Order sending failed:', error);
-        alert('Failed to send MESS order. Error: ' + error.text);
+        console.error('FAILED...', error);
+        alert('Failed to send order. Error: ' + JSON.stringify(error));
     } finally {
         setLoadingState(false);
     }
@@ -391,10 +419,6 @@ function resetProductSelection() {
     updateSelectedProductDisplay();
 }
 
-// ============================================
-// SCROLL ANIMATIONS
-// ============================================
-
 function observeProducts() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -422,10 +446,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ============================================
-// MOBILE MENU
-// ============================================
-
 mobileMenuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('active');
     
@@ -450,10 +470,6 @@ document.querySelectorAll('.mobile-link').forEach(link => {
         spans[2].style.transform = '';
     });
 });
-
-// ============================================
-// INITIALIZATION
-// ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();

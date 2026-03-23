@@ -1,57 +1,151 @@
 /**
- * NOIR LUXE - Luxury Fashion E-commerce
+ * MESS - Make Every Style Statement
+ * Luxury Fashion E-commerce
  * Complete JavaScript Functionality
  */
 
 // ============================================
-// PRODUCT CONFIGURATION
+// PRODUCT CONFIGURATION - MESS COLLECTION
 // ============================================
-// 📝 EDIT THIS ARRAY TO ADD/MODIFY PRODUCTS
-// Simply add new objects to this array following the same structure
-// Remove any products you don't want - they won't appear on the site
+// 📝 SAMPLE PRODUCTS - DELETE ANY YOU DON'T WANT
+// Simply remove the objects you don't need, keep the ones you want
+// Or add new ones following the same structure
 
 const products = [
+    // === STREETWEAR COLLECTION ===
     {
         id: 1,
-        name: "Midnight Leather Jacket",
-        price: "$299",
-        image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=800&fit=crop",
-        sizes: ["S", "M", "L", "XL"]
+        name: "MESS Signature Hoodie",
+        price: "$129",
+        image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=800&fit=crop",
+        sizes: ["S", "M", "L", "XL", "XXL"]
     },
     {
         id: 2,
-        name: "Neon Pink Statement Tee",
-        price: "$89",
-        image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&h=800&fit=crop",
+        name: "MESS Urban Cargo Pants",
+        price: "$159",
+        image: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&h=800&fit=crop",
         sizes: ["S", "M", "L", "XL"]
     },
     {
         id: 3,
-        name: "Urban Denim Collection",
-        price: "$149",
-        image: "https://images.unsplash.com/photo-1542272454315-4c01d7abdf4a?w=600&h=800&fit=crop",
-        sizes: ["S", "M", "L", "XL"]
+        name: "MESS Neon Pink Tee",
+        price: "$59",
+        image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&h=800&fit=crop",
+        sizes: ["S", "M", "L", "XL", "XXL"]
     },
     {
         id: 4,
-        name: "Luxury Chronograph Watch",
-        price: "$449",
-        image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&h=800&fit=crop",
-        sizes: ["One Size"]
+        name: "MESS Oversized Sweatshirt",
+        price: "$119",
+        image: "https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?w=600&h=800&fit=crop",
+        sizes: ["S", "M", "L", "XL"]
     },
+    
+    // === OUTERWEAR COLLECTION ===
     {
         id: 5,
-        name: "Designer Sunglasses",
+        name: "MESS Premium Leather Jacket",
+        price: "$399",
+        image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=800&fit=crop",
+        sizes: ["S", "M", "L", "XL"]
+    },
+    {
+        id: 6,
+        name: "MESS Denim Bomber Jacket",
+        price: "$189",
+        image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=800&fit=crop",
+        sizes: ["S", "M", "L", "XL", "XXL"]
+    },
+    {
+        id: 7,
+        name: "MESS Trench Coat Black",
+        price: "$279",
+        image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=800&fit=crop",
+        sizes: ["S", "M", "L", "XL"]
+    },
+    
+    // === ACCESSORIES COLLECTION ===
+    {
+        id: 8,
+        name: "MESS Designer Sunglasses",
         price: "$199",
         image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=800&fit=crop",
         sizes: ["One Size"]
     },
     {
-        id: 6,
-        name: "Premium Sneakers",
+        id: 9,
+        name: "MESS Luxury Watch",
+        price: "$449",
+        image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&h=800&fit=crop",
+        sizes: ["One Size"]
+    },
+    {
+        id: 10,
+        name: "MESS Leather Backpack",
         price: "$249",
+        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=800&fit=crop",
+        sizes: ["One Size"]
+    },
+    {
+        id: 11,
+        name: "MESS Crossbody Bag",
+        price: "$179",
+        image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&h=800&fit=crop",
+        sizes: ["One Size"]
+    },
+    
+    // === FOOTWEAR COLLECTION ===
+    {
+        id: 12,
+        name: "MESS High-Top Sneakers",
+        price: "$229",
         image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=800&fit=crop",
         sizes: ["40", "41", "42", "43", "44", "45"]
+    },
+    {
+        id: 13,
+        name: "MESS Running Shoes",
+        price: "$199",
+        image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&h=800&fit=crop",
+        sizes: ["40", "41", "42", "43", "44", "45", "46"]
+    },
+    {
+        id: 14,
+        name: "MESS Chelsea Boots",
+        price: "$289",
+        image: "https://images.unsplash.com/photo-1638247025967-b4e38f787b76?w=600&h=800&fit=crop",
+        sizes: ["40", "41", "42", "43", "44", "45"]
+    },
+    
+    // === EXCLUSIVE COLLECTION ===
+    {
+        id: 15,
+        name: "MESS Limited Edition Hoodie",
+        price: "$299",
+        image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=800&fit=crop",
+        sizes: ["S", "M", "L", "XL"]
+    },
+    {
+        id: 16,
+        name: "MESS Designer Cap",
+        price: "$79",
+        image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=600&h=800&fit=crop",
+        sizes: ["One Size"]
+    },
+    {
+        id: 17,
+        name: "MESS Premium Belt",
+        price: "$129",
+        image: "https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=600&h=800&fit=crop",
+        sizes: ["S", "M", "L", "XL"]
+    },
+    {
+        id: 18,
+        name: "MESS Street Gloves",
+        price: "$89",
+        image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=800&fit=crop",
+        sizes: ["S", "M", "L", "XL"]
     }
 ];
 
@@ -118,7 +212,7 @@ function createProductCard(product, index) {
     
     card.innerHTML = `
         <div style="overflow: hidden; border-radius: 20px 20px 0 0;">
-            <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+            <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy" onerror="this.src='https://via.placeholder.com/600x800/1a1a1a/FF2D8F?text=MESS'">
         </div>
         <div class="product-info">
             <h3 class="product-name">${product.name}</h3>
@@ -208,12 +302,12 @@ function initiateOrder(productId) {
  */
 function updateSelectedProductDisplay() {
     if (!selectedProduct || !selectedSize) {
-        selectedProductDiv.innerHTML = '<span class="no-selection">Please select a product from above</span>';
+        selectedProductDiv.innerHTML = '<span class="no-selection">Please select a MESS product from above</span>';
         return;
     }
     
     selectedProductDiv.innerHTML = `
-        <img src="${selectedProduct.image}" alt="${selectedProduct.name}">
+        <img src="${selectedProduct.image}" alt="${selectedProduct.name}" onerror="this.src='https://via.placeholder.com/60x60/1a1a1a/FF2D8F?text=M'">
         <div class="selected-product-info">
             <h4>${selectedProduct.name}</h4>
             <p>${selectedProduct.price} - Size: ${selectedSize}</p>
@@ -234,9 +328,9 @@ function openWhatsApp(productId) {
     
     if (selectedBtn) {
         sizeText = selectedBtn.dataset.size;
-        message = `Hello, I want to order ${product.name} - Size: ${sizeText} (${product.price})`;
+        message = `Hello MESS, I want to order ${product.name} - Size: ${sizeText} (${product.price})`;
     } else {
-        message = `Hello, I'm interested in ${product.name} (${product.price}). Please let me know available sizes.`;
+        message = `Hello MESS, I'm interested in ${product.name} (${product.price}). Please let me know available sizes.`;
     }
     
     const whatsappUrl = `https://wa.me/212673991904?text=${encodeURIComponent(message)}`;
@@ -255,7 +349,7 @@ orderForm.addEventListener('submit', async function(e) {
     
     // Validate product selection
     if (!selectedProduct || !selectedSize) {
-        alert('Please select a product and size first');
+        alert('Please select a MESS product and size first');
         document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
         return;
     }
@@ -284,7 +378,7 @@ orderForm.addEventListener('submit', async function(e) {
             'Z7kuWQhsKGjCHrx4e'
         );
         
-        console.log('Email sent successfully:', response);
+        console.log('MESS Order sent successfully:', response);
         
         // Show success message
         showSuccessMessage();
@@ -294,8 +388,8 @@ orderForm.addEventListener('submit', async function(e) {
         resetProductSelection();
         
     } catch (error) {
-        console.error('Email sending failed:', error);
-        alert('Failed to send order. Please try again or contact us via WhatsApp.');
+        console.error('MESS Order sending failed:', error);
+        alert('Failed to send MESS order. Please try again or contact us via WhatsApp.');
     } finally {
         setLoadingState(false);
     }
@@ -433,6 +527,6 @@ document.querySelectorAll('.mobile-link').forEach(link => {
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
-    console.log('NOIR LUXE initialized successfully');
-    console.log(`Loaded ${products.length} products`);
+    console.log('MESS - Make Every Style Statement');
+    console.log(`Loaded ${products.length} MESS products`);
 });

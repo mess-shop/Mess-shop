@@ -235,3 +235,39 @@ document.addEventListener('DOMContentLoaded', function() {
    - Updating WhatsApp links with the product name
    - Scroll animations for new products
    ============================================ */
+let selectedSize = "";
+
+// عندما يضغط المستخدم مقاس
+document.querySelectorAll(".size-btn").forEach(btn => {
+  btn.addEventListener("click", function () {
+
+    // إزالة التحديد القديم
+    document.querySelectorAll(".size-btn")
+      .forEach(b => b.classList.remove("active"));
+
+    // تحديد الجديد
+    this.classList.add("active");
+
+    selectedSize = this.dataset.size;
+  });
+});
+
+
+// عند الضغط Order Now
+document.querySelectorAll(".order-btn").forEach(button => {
+  button.addEventListener("click", function () {
+
+    if (!selectedSize) {
+      alert("Choose size first");
+      return;
+    }
+
+    const product = this.dataset.product;
+
+    document.getElementById("productName").value = product;
+    document.getElementById("productSize").value = selectedSize;
+
+    document.getElementById("order")
+      .scrollIntoView({ behavior: "smooth" });
+  });
+});

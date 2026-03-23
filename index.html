@@ -1,317 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MESS Brand</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MESS BRAND</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo">MESS Brand</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#order" class="order-nav">Order Now</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">MESS Brand</h1>
-            <p class="hero-subtitle">Minimal. Bold. Unapologetic.</p>
-            <a href="#products" class="cta-button">Shop Now</a>
-        </div>
-    </section>
+<!-- ================= HEADER ================= -->
+<header>
+    <h1>MESS BRAND</h1>
+</header>
 
-    <!-- Products Section -->
-    <section id="products" class="products">
-        <div class="container">
-            <h2 class="section-title">Our Collection</h2>
-            <div class="products-grid">
-                
-                <!-- Product 1 - Copy this block to add more products -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://via.placeholder.com/400x500/1a1a1a/FF2D8F?text=Product+1" alt="Classic Black Tee">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Classic Black Tee</h3>
-                        <p class="product-price">$45.00</p>
-                        <div class="product-actions">
-                            <div class="sizes">
-                               <button class="size-btn" data-size="S">S</button>
-                               <button class="size-btn" data-size="M">M</button>
-                               <button class="size-btn" data-size="L">L</button>
-                               <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                            <button class="order-btn" data-product="Classic Black Tee">Order Now</button>
-                            <a href="https://wa.me/0673991904?text=Hello, I want to order Classic Black Tee" class="whatsapp-btn" target="_blank" data-product="Classic Black Tee">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Product 1 -->
+<!-- ================= PRODUCTS ================= -->
+<section class="products">
 
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://via.placeholder.com/400x500/1a1a1a/FF2D8F?text=Product+2" alt="Oversized Hoodie">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Oversized Hoodie</h3>
-                        <p class="product-price">$85.00</p>
-                        <div class="product-actions">
-                            <div class="sizes">
-                              <button class="size-btn" data-size="S">S</button>
-                              <button class="size-btn" data-size="M">M</button>
-                              <button class="size-btn" data-size="L">L</button>
-                              <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                            <button class="order-btn" data-product="Oversized Hoodie">Order Now</button>
-                            <a href="https://wa.me/0673991904?text=Hello, I want to order Oversized Hoodie" class="whatsapp-btn" target="_blank" data-product="Oversized Hoodie">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Product 2 -->
+<div class="product-card">
 
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://via.placeholder.com/400x500/1a1a1a/FF2D8F?text=Product+3" alt="Cargo Pants">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Cargo Pants</h3>
-                        <p class="product-price">$75.00</p>
-                        <div class="product-actions">
-                             <div class="sizes">
-                               <button class="size-btn" data-size="S">S</button>
-                               <button class="size-btn" data-size="M">M</button>
-                               <button class="size-btn" data-size="L">L</button>
-                               <button class="size-btn" data-size="XL">XL</button>
-                             </div>
-                             <button class="order-btn" data-product="Cargo Pants">Order Now</button>
-                            <a href="https://wa.me/0673991904?text=Hello, I want to order Cargo Pants" class="whatsapp-btn" target="_blank" data-product="Cargo Pants">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Product 3 -->
+    <div class="product-info">
+        <h3>Denim Jacket</h3>
 
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://via.placeholder.com/400x500/1a1a1a/FF2D8F?text=Product+4" alt="Street Cap">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Street Cap</h3>
-                        <p class="product-price">$35.00</p>
-                        <div class="product-actions">
-                            <div class="sizes">
-                               <button class="size-btn" data-size="S">S</button>
-                               <button class="size-btn" data-size="M">M</button>
-                               <button class="size-btn" data-size="L">L</button>
-                               <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                            <button class="order-btn" data-product="Street Cap">Order Now</button>
-                            <a href="https://wa.me/0673991904?text=Hello, I want to order Street Cap" class="whatsapp-btn" target="_blank" data-product="Street Cap">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Product 4 -->
+        <div class="product-actions">
 
-                <!-- Product 5 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://via.placeholder.com/400x500/1a1a1a/FF2D8F?text=Product+5" alt="Graphic Sweatshirt">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Graphic Sweatshirt</h3>
-                        <p class="product-price">$65.00</p>
-                        <div class="product-actions">
-                            <div class="sizes">
-                               <button class="size-btn" data-size="S">S</button>
-                               <button class="size-btn" data-size="M">M</button>
-                               <button class="size-btn" data-size="L">L</button>
-                               <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                            <button class="order-btn" data-product="Graphic Sweatshirt">Order Now</button>
-                            <a href="https://wa.me/0673991904?text=Hello, I want to order Graphic Sweatshirt" class="whatsapp-btn" target="_blank" data-product="Graphic Sweatshirt">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Product 5 -->
-
-                <!-- Product 6 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://via.placeholder.com/400x500/1a1a1a/FF2D8F?text=Product+6" alt="Denim Jacket">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Denim Jacket</h3>
-                        <p class="product-price">$95.00</p>
-                        <div class="product-actions">
-                            <div class="sizes">
-                               <button class="size-btn" data-size="S">S</button>
-                               <button class="size-btn" data-size="M">M</button>
-                               <button class="size-btn" data-size="L">L</button>
-                               <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                            <button class="order-btn" data-product="Denim Jacket">Order Now</button>
-                            <a href="https://wa.me/0673991904?text=Hello, I want to order Denim Jacket" class="whatsapp-btn" target="_blank" data-product="Denim Jacket">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Product 6 -->
-
-                <!-- 
-                ============================================
-                TO ADD A NEW PRODUCT:
-                1. Copy the entire product block above (from <!-- Product X --> to <!-- End Product X -->)
-                2. Paste it after the last product
-                3. Update:
-                   - Product number in comments
-                   - Image URL (replace placeholder text)
-                   - alt text
-                   - Product name
-                   - Price
-                   - data-product attribute (in both button and WhatsApp link)
-                   - WhatsApp message text
-                ============================================
-                -->
-
+            <!-- SIZE BUTTONS -->
+            <div class="sizes">
+                <button class="size-btn" data-size="S">S</button>
+                <button class="size-btn" data-size="M">M</button>
+                <button class="size-btn" data-size="L">L</button>
+                <button class="size-btn" data-size="XL">XL</button>
             </div>
+
+            <!-- ORDER BUTTON -->
+            <button class="order-btn" data-product="Denim Jacket">
+                Order Now
+            </button>
+
+            <!-- WHATSAPP -->
+            <a href="https://wa.me/0673991904?text=Hello, I want to order Denim Jacket"
+               class="whatsapp-btn"
+               target="_blank">
+               WhatsApp
+            </a>
+
         </div>
-    </section>
+    </div>
 
-    <!-- Order Form Section -->
-    <section id="order" class="order-section">
-        <div class="container">
-            <div class="order-container">
-                <h2 class="section-title">Place Your Order</h2>
-                <p class="order-subtitle">Fill in your details and we'll contact you soon</p>
-                
-                <!-- 
-                ============================================
-                FORM SETUP INSTRUCTIONS:
-                
-                OPTION 1: Formspree (Recommended)
-                1. Go to https://formspree.io/
-                2. Sign up with your email: mess95374@gmail.com
-                3. Create a new form
-                4. Copy your form ID (looks like: xxxxxxxx)
-                5. Replace "YOUR_FORM_ID" below with your actual form ID
-                
-                OPTION 2: Use mailto (Simple but less reliable)
-                - Change action to: mailto:mess95374@gmail.com
-                - This will open the user's email client
-                ============================================
-                -->
-                <form id="orderForm" action="https://formspree.io/f/mgonjgeo" method="POST" class="order-form">
-                    
-                    <!-- Hidden field for your email -->
-                    <input type="hidden" name="_replyto" value="mess95374@gmail.com">
-                    
-                    <!-- Redirect after submission (optional) -->
-                    <input type="hidden" name="_next" value="">
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" name="firstName" required placeholder="John">
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" required placeholder="Doe">
-                        </div>
-                    </div>
+</div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required placeholder="john@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required placeholder="+1 234 567 890">
-                        </div>
-                    </div>
+</section>
 
-                    <div class="form-group full-width">
-                        <label for="address">Address *</label>
-                        <textarea id="address" name="address" rows="3" required placeholder="Your full address..."></textarea>
-                    </div>
+<!-- ================= ORDER FORM ================= -->
+<section id="order" class="order-section">
 
-                    <div class="form-group full-width">
-                        <label for="productName">Product Name *</label>
-                        <input type="text" id="productName" name="productName" required placeholder="Enter the product you want to order">
-                    </div>
-                    <input type="hidden" id="productSize" name="productSize" required placeholder="Enter the size you want to order">
-                    </div>
+<h2>Complete Your Order</h2>
 
-                    <div class="form-group full-width">
-                        <label for="notes">Additional Notes (Optional)</label>
-                        <textarea id="notes" name="notes" rows="2" placeholder="Additional notes (optional)..."></textarea
-                    </div>
+<form id="orderForm">
 
-                    <button type="submit" class="submit-btn">Submit Order</button>
-                </form>
+    <div class="form-group full-width">
+        <label>Product Name *</label>
+        <input type="text" id="productName" name="productName" required>
+    </div>
 
-                <!-- Success Message (Hidden by default) -->
-                <div id="successMessage" class="success-message">
-                    <div class="success-icon">✓</div>
-                    <h3>Thank you for your order!</h3>
-                    <p>We will contact you soon.</p>
-                    <button id="newOrderBtn" class="submit-btn">Place Another Order</button>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- HIDDEN SIZE -->
+    <input type="hidden" id="productSize" name="productSize">
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">MESS Brand</div>
-                <p class="footer-text">Minimal. Bold. Unapologetic.</p>
-                <div class="footer-contact">
-                    <a href="mailto:mess95374@gmail.com">mess95374@gmail.com</a>
-                    <a href="https://wa.me/0673991904" target="_blank">WhatsApp: 0673991904</a>
-                </div>
-                <p class="copyright">© 2024 MESS Brand. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" name="fullName" required>
+    </div>
 
-    <script src="script.js"></script>
+    <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" name="phone" required>
+    </div>
+
+    <div class="form-group full-width">
+        <label>Address *</label>
+        <input type="text" name="address" required>
+    </div>
+
+    <!-- ONLY NOTES -->
+    <div class="form-group full-width">
+        <label>Additional Notes</label>
+        <textarea id="notes"
+                  name="notes"
+                  rows="3"
+                  placeholder="Additional notes (optional)..."></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">
+        Submit Order
+    </button>
+
+</form>
+
+<!-- SUCCESS MESSAGE -->
+<div id="successMessage" style="display:none;">
+    <h3>✅ Order Sent Successfully!</h3>
+    <button id="newOrderBtn">New Order</button>
+</div>
+
+</section>
+
+<!-- ================= SCRIPT ================= -->
+<script src="script.js"></script>
+
 </body>
 </html>

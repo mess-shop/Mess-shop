@@ -135,8 +135,11 @@ const products = [
 let selectedProduct = null;
 let selectedSize = null;
 
+// ============================================
+// EMAILJS CONFIGURATION - NEW CREDENTIALS
+// ============================================
 (function() {
-    emailjs.init("Z7kuWQhsKGjCHrx4e");
+    emailjs.init("w6sb4QPFn1Zk-nkWV");
 })();
 
 const productsGrid = document.getElementById('productsGrid');
@@ -274,7 +277,7 @@ function openWhatsApp(productId) {
 }
 
 // ============================================
-// FIXED FORM HANDLING - ALL VARIABLES MATCHING
+// FORM HANDLING - MATCHING YOUR TEMPLATE
 // ============================================
 
 orderForm.addEventListener('submit', async function(e) {
@@ -286,84 +289,35 @@ orderForm.addEventListener('submit', async function(e) {
         return;
     }
     
-    // Get all form values
+    // Get form values
     const customerName = document.getElementById('customerName').value.trim();
     const customerPhone = document.getElementById('customerPhone').value.trim();
     const customerAddress = document.getElementById('customerAddress').value.trim();
     const orderNotes = document.getElementById('orderNotes').value.trim() || 'No additional notes';
     
-    // Debug - check values before sending
-    console.log('=== ORDER DETAILS ===');
-    console.log('Product:', selectedProduct.name);
-    console.log('Size:', selectedSize);
-    console.log('Customer:', customerName);
-    console.log('Phone:', customerPhone);
-    console.log('Address:', customerAddress);
-    console.log('Notes:', orderNotes);
-    
-    // ==========================================
-    // CRITICAL FIX: Send ALL possible variable names
-    // Your template might use any of these formats
-    // ==========================================
-    
+    // Template variables matching your EmailJS template exactly
     const templateParams = {
-        // Standard format (lowercase, no spaces)
-        product: selectedProduct.name,
-        size: selectedSize,
-        name: customerName,
-        phone: customerPhone,
-        address: customerAddress,
-        notes: orderNotes,
-        
-        // Alternative formats (in case template uses these)
-        product_name: selectedProduct.name,
-        productName: selectedProduct.name,
-        Product: selectedProduct.name,
-        
-        size_selected: selectedSize,
-        selectedSize: selectedSize,
-        Size: selectedSize,
-        
-        customer_name: customerName,
-        customerName: customerName,
-        full_name: customerName,
-        fullName: customerName,
-        customer: customerName,
-        Customer: customerName,
-        
-        phone_number: customerPhone,
-        phoneNumber: customerPhone,
-        Phone: customerPhone,
-        
-        customer_address: customerAddress,
-        customerAddress: customerAddress,
-        delivery_address: customerAddress,
-        deliveryAddress: customerAddress,
-        Address: customerAddress,
-        
-        order_notes: orderNotes,
-        orderNotes: orderNotes,
-        additional_notes: orderNotes,
-        Notes: orderNotes,
-        
-        // Price info (bonus)
-        price: selectedProduct.price,
-        product_price: selectedProduct.price
+        productName: selectedProduct.name,    // Matches {{productName}}
+        size: selectedSize,                    // Matches {{size}}
+        fullName: customerName,                // Matches {{fullName}}
+        phone: customerPhone,                  // Matches {{phone}}
+        address: customerAddress,              // Matches {{address}}
+        notes: orderNotes                      // Matches {{notes}}
     };
     
-    console.log('Sending params:', templateParams);
+    console.log('Sending order:', templateParams);
     
     setLoadingState(true);
     
     try {
         const response = await emailjs.send(
-            'service_2ikbrx5',
-            'template_bukv4de',
+            'service_gjhejzj',      // NEW Service ID
+            'template_8gop29j',     // NEW Template ID
             templateParams,
-            'Z7kuWQhsKGjCHrx4e'
+            'w6sb4QPFn1Zk-nkWV'     // NEW Public Key
         );
         
-        console.log('SUCCESS!', response.status, response.text);
+        console.log('SUCCESS!', response);
         
         showSuccessMessage();
         orderForm.reset();

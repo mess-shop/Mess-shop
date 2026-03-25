@@ -121,7 +121,7 @@
                     <div class="success-message" id="successMessage">
                         <div class="success-icon">✓</div>
                         <h3>Order Received!</h3>
-                        <p>Thank you for choosing MESS. We've sent a confirmation email and will contact you shortly via WhatsApp.</p>
+                        <p>Thank you for choosing MESS. We've sent a confirmation email to your inbox and will contact you shortly via WhatsApp.</p>
                         <button class="new-order-btn" id="newOrderBtn">Place New Order</button>
                     </div>
 
@@ -143,6 +143,13 @@
                                 <label for="customerPhone">Phone Number *</label>
                                 <input type="tel" id="customerPhone" name="customerPhone" required placeholder="+212 6XX XXX XXX">
                             </div>
+                        </div>
+
+                        <!-- NEW: Email Field for Confirmation -->
+                        <div class="form-group">
+                            <label for="customerEmail">Email Address *</label>
+                            <input type="email" id="customerEmail" name="customerEmail" required placeholder="your@email.com">
+                            <small style="color: #666; font-size: 0.8rem; margin-top: 0.25rem; display: block;">We'll send your order confirmation here</small>
                         </div>
 
                         <div class="form-group">

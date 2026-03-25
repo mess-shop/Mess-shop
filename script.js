@@ -1,20 +1,27 @@
 /**
  * MESS - Make Every Style Statement
  * Luxury Fashion E-commerce
- * With Auto-Confirmation Email
+ * Dual EmailJS Account System
  */
 
 // ============================================
-// CONFIGURATION - UPDATE THIS!
+// EMAILJS CONFIGURATION - TWO ACCOUNTS
 // ============================================
 
-// 🔴 IMPORTANT: Replace with your NEW customer confirmation template ID
-const CUSTOMER_TEMPLATE_ID = 'template_axu44zp'; // <-- REPLACE THIS!
+// ACCOUNT 1: Your notifications (OLD account)
+const ADMIN_CONFIG = {
+    serviceId: 'service_gjhejzj',
+    templateId: 'template_8gop29j',
+    publicKey: 'w6sb4QPFn1Zk-nkWV',
+    yourEmail: 'messfashion35@gmail.com'
+};
 
-// Your EmailJS credentials
-const SERVICE_ID = 'service_gjhejzj';
-const ADMIN_TEMPLATE_ID = 'template_8gop29j';
-const PUBLIC_KEY = 'w6sb4QPFn1Zk-nkWV';
+// ACCOUNT 2: Customer confirmations (NEW account)
+const CUSTOMER_CONFIG = {
+    serviceId: 'service_7al4ewi',
+    templateId: 'template_axu44zp',
+    publicKey: 'KvAYzFidrF0u33PDn'
+};
 
 // ============================================
 // PRODUCT CONFIGURATION - MESS COLLECTION
@@ -153,12 +160,11 @@ let selectedProduct = null;
 let selectedSize = null;
 
 // ============================================
-// EMAILJS INITIALIZATION
+// EMAILJS INITIALIZATION - BOTH ACCOUNTS
 // ============================================
 
-(function() {
-    emailjs.init(PUBLIC_KEY);
-})();
+// We need to use emailjs.send with explicit keys for each account
+// instead of init(), since we have two different accounts
 
 // ============================================
 // DOM ELEMENTS
@@ -322,56 +328,57 @@ orderForm.addEventListener('submit', async function(e) {
     const customerAddress = document.getElementById('customerAddress').value.trim();
     const orderNotes = document.getElementById('orderNotes').value.trim() || 'No additional notes';
     
-    // Common data for both emails
-    const orderData = {
-        productName: selectedProduct.name,
-        size: selectedSize,
-        fullName: customerName,
-        phone: customerPhone,
-        address: customerAddress,
-        notes: orderNotes,
-        price: selectedProduct.price,
-        customerEmail: customerEmail
-    };
-    
-    console.log('Processing order:', orderData);
+    console.log('Processing order for:', customerName, customerEmail);
     
     setLoadingState(true);
     
     try {
-        // EMAIL 1: Send to YOU (Admin notification)
-        console.log('Sending admin email...');
+        // EMAIL 1: Send to YOU (Admin notification) - OLD ACCOUNT
+        console.log('Sending admin email to:', ADMIN_CONFIG.yourEmail);
         
-        const adminEmailData = {
-            ...orderData,
-            to_email: 'messfashion35@gmail.com'
+        const adminTemplateParams = {
+            productName: selectedProduct.name,
+            size: selectedSize,
+            fullName: customerName,
+            phone: customerPhone,
+            address: customerAddress,
+            notes: orderNotes,
+            price: selectedProduct.price,
+            to_email: ADMIN_CONFIG.yourEmail
         };
         
         await emailjs.send(
-            SERVICE_ID,
-            ADMIN_TEMPLATE_ID,
-            adminEmailData,
-            PUBLIC_KEY
+            ADMIN_CONFIG.serviceId,
+            ADMIN_CONFIG.templateId,
+            adminTemplateParams,
+            ADMIN_CONFIG.publicKey
         );
         
-        console.log('✓ Admin email sent!');
+        console.log('✓ Admin email sent successfully!');
         
-        // EMAIL 2: Send to CUSTOMER (Confirmation)
-        console.log('Sending customer confirmation...');
+        // EMAIL 2: Send to CUSTOMER (Confirmation) - NEW ACCOUNT
+        console.log('Sending confirmation to customer:', customerEmail);
         
-        const customerEmailData = {
-            ...orderData,
-            to_email: customerEmail  // Customer's email
+        const customerTemplateParams = {
+            product_name: selectedProduct.name,      // Matches {{product_name}}
+            size: selectedSize,                       // Matches {{size}}
+            price: selectedProduct.price,             // Matches {{price}}
+            customer_name: customerName,              // Matches {{customer_name}}
+            customer_phone: customerPhone,            // Matches {{customer_phone}}
+            customer_address: customerAddress,        // Matches {{customer_address}}
+            customer_email: customerEmail,            // Matches {{customer_email}}
+            notes: orderNotes,                        // Matches {{notes}}
+            to_email: customerEmail                   // Where to send
         };
         
         await emailjs.send(
-            SERVICE_ID,
-            CUSTOMER_TEMPLATE_ID,  // Your new confirmation template
-            customerEmailData,
-            PUBLIC_KEY
+            CUSTOMER_CONFIG.serviceId,
+            CUSTOMER_CONFIG.templateId,
+            customerTemplateParams,
+            CUSTOMER_CONFIG.publicKey
         );
         
-        console.log('✓ Customer email sent!');
+        console.log('✓ Customer confirmation sent successfully!');
         
         showSuccessMessage();
         orderForm.reset();
@@ -379,7 +386,7 @@ orderForm.addEventListener('submit', async function(e) {
         
     } catch (error) {
         console.error('FAILED...', error);
-        alert('Failed to send order. Please check your internet connection and try again.\n\nError: ' + JSON.stringify(error));
+        alert('Failed to send order. Error: ' + JSON.stringify(error));
     } finally {
         setLoadingState(false);
     }
@@ -494,6 +501,7 @@ document.querySelectorAll('.mobile-link').forEach(link => {
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     console.log('MESS - Make Every Style Statement');
-    console.log(`Loaded ${products.length} MESS products`);
-    console.log('Auto-confirmation email system active');
+    console.log('Dual EmailJS system active');
+    console.log('Admin account:', ADMIN_CONFIG.serviceId);
+    console.log('Customer account:', CUSTOMER_CONFIG.serviceId);
 });

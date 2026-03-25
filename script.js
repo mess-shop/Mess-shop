@@ -1,7 +1,24 @@
 /**
  * MESS - Make Every Style Statement
  * Luxury Fashion E-commerce
+ * With Auto-Confirmation Email
  */
+
+// ============================================
+// CONFIGURATION - UPDATE THIS!
+// ============================================
+
+// 🔴 IMPORTANT: Replace with your NEW customer confirmation template ID
+const CUSTOMER_TEMPLATE_ID = 'template_axu44zp'; // <-- REPLACE THIS!
+
+// Your EmailJS credentials
+const SERVICE_ID = 'service_gjhejzj';
+const ADMIN_TEMPLATE_ID = 'template_8gop29j';
+const PUBLIC_KEY = 'w6sb4QPFn1Zk-nkWV';
+
+// ============================================
+// PRODUCT CONFIGURATION - MESS COLLECTION
+// ============================================
 
 const products = [
     {
@@ -136,11 +153,16 @@ let selectedProduct = null;
 let selectedSize = null;
 
 // ============================================
-// EMAILJS CONFIGURATION - NEW CREDENTIALS
+// EMAILJS INITIALIZATION
 // ============================================
+
 (function() {
-    emailjs.init("w6sb4QPFn1Zk-nkWV");
+    emailjs.init(PUBLIC_KEY);
 })();
+
+// ============================================
+// DOM ELEMENTS
+// ============================================
 
 const productsGrid = document.getElementById('productsGrid');
 const orderForm = document.getElementById('orderForm');
@@ -151,6 +173,10 @@ const newOrderBtn = document.getElementById('newOrderBtn');
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 const navbar = document.getElementById('navbar');
+
+// ============================================
+// PRODUCT RENDERING
+// ============================================
 
 function renderProducts() {
     productsGrid.innerHTML = '';
@@ -277,7 +303,7 @@ function openWhatsApp(productId) {
 }
 
 // ============================================
-// FORM HANDLING - MATCHING YOUR TEMPLATE
+// FORM HANDLING - DUAL EMAIL SYSTEM
 // ============================================
 
 orderForm.addEventListener('submit', async function(e) {
@@ -289,35 +315,63 @@ orderForm.addEventListener('submit', async function(e) {
         return;
     }
     
-    // Get form values
+    // Get all form values
     const customerName = document.getElementById('customerName').value.trim();
     const customerPhone = document.getElementById('customerPhone').value.trim();
+    const customerEmail = document.getElementById('customerEmail').value.trim();
     const customerAddress = document.getElementById('customerAddress').value.trim();
     const orderNotes = document.getElementById('orderNotes').value.trim() || 'No additional notes';
     
-    // Template variables matching your EmailJS template exactly
-    const templateParams = {
-        productName: selectedProduct.name,    // Matches {{productName}}
-        size: selectedSize,                    // Matches {{size}}
-        fullName: customerName,                // Matches {{fullName}}
-        phone: customerPhone,                  // Matches {{phone}}
-        address: customerAddress,              // Matches {{address}}
-        notes: orderNotes                      // Matches {{notes}}
+    // Common data for both emails
+    const orderData = {
+        productName: selectedProduct.name,
+        size: selectedSize,
+        fullName: customerName,
+        phone: customerPhone,
+        address: customerAddress,
+        notes: orderNotes,
+        price: selectedProduct.price,
+        customerEmail: customerEmail
     };
     
-    console.log('Sending order:', templateParams);
+    console.log('Processing order:', orderData);
     
     setLoadingState(true);
     
     try {
-        const response = await emailjs.send(
-            'service_gjhejzj',      // NEW Service ID
-            'template_8gop29j',     // NEW Template ID
-            templateParams,
-            'w6sb4QPFn1Zk-nkWV'     // NEW Public Key
+        // EMAIL 1: Send to YOU (Admin notification)
+        console.log('Sending admin email...');
+        
+        const adminEmailData = {
+            ...orderData,
+            to_email: 'messfashion35@gmail.com'
+        };
+        
+        await emailjs.send(
+            SERVICE_ID,
+            ADMIN_TEMPLATE_ID,
+            adminEmailData,
+            PUBLIC_KEY
         );
         
-        console.log('SUCCESS!', response);
+        console.log('✓ Admin email sent!');
+        
+        // EMAIL 2: Send to CUSTOMER (Confirmation)
+        console.log('Sending customer confirmation...');
+        
+        const customerEmailData = {
+            ...orderData,
+            to_email: customerEmail  // Customer's email
+        };
+        
+        await emailjs.send(
+            SERVICE_ID,
+            CUSTOMER_TEMPLATE_ID,  // Your new confirmation template
+            customerEmailData,
+            PUBLIC_KEY
+        );
+        
+        console.log('✓ Customer email sent!');
         
         showSuccessMessage();
         orderForm.reset();
@@ -325,7 +379,7 @@ orderForm.addEventListener('submit', async function(e) {
         
     } catch (error) {
         console.error('FAILED...', error);
-        alert('Failed to send order. Error: ' + JSON.stringify(error));
+        alert('Failed to send order. Please check your internet connection and try again.\n\nError: ' + JSON.stringify(error));
     } finally {
         setLoadingState(false);
     }
@@ -373,6 +427,10 @@ function resetProductSelection() {
     updateSelectedProductDisplay();
 }
 
+// ============================================
+// SCROLL ANIMATIONS
+// ============================================
+
 function observeProducts() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -400,6 +458,10 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// ============================================
+// MOBILE MENU
+// ============================================
+
 mobileMenuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('active');
     
@@ -425,8 +487,13 @@ document.querySelectorAll('.mobile-link').forEach(link => {
     });
 });
 
+// ============================================
+// INITIALIZATION
+// ============================================
+
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     console.log('MESS - Make Every Style Statement');
     console.log(`Loaded ${products.length} MESS products`);
+    console.log('Auto-confirmation email system active');
 });
